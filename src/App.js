@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
+import React, { useState } from "react";
+import Companies from "./components/Companies";
+import SocialMediaComparisonChart from "./components/SocialMediaComparisonChart";
+import FollowersDisplay from "./components/FollowersDisplay ";
+import data from "./components/data";
+import Header from "./components/Header";
+
+const App = () => {
+  const [selectedCompany, setSelectedCompany] = useState(null);
+
+  const handleCompanyClick = (company) => {
+    setSelectedCompany(company);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header/>
+      <Companies onCompanyClick={handleCompanyClick} />
+      {selectedCompany && (
+        <FollowersDisplay company={selectedCompany} followersData={data} />
+      )}
+      
+      {selectedCompany && (
+        <SocialMediaComparisonChart
+          company={selectedCompany}
+          followersData={data}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default App;
