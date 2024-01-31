@@ -14,13 +14,13 @@ const SocialMediaComparisonChart = ({ company, followersData }) => {
   }));
 
   const layout = {
-    title: `Social Media Followers Comparison for ${company}`,
+    title: 'Social Media Followers Comparison',
     xaxis: { title: 'Social Media Platform' },
     yaxis: { title: 'Number of Followers' },
   };
 
   const cardStyle = {
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 4px 8px rgba(0.5, 0.5, 0.5, 0.5)',
     borderRadius: '8px',
     padding: '16px',
     margin: '20px',
@@ -29,7 +29,6 @@ const SocialMediaComparisonChart = ({ company, followersData }) => {
 
   return (
     <div style={cardStyle}>
-      <h2>{company}</h2>
       <Plot
         data={data}
         layout={layout}
